@@ -18,6 +18,7 @@ public class AuthController : BaseApiController
 
         return HandleResult(result);
     }
+   
     [HttpPost("register")]
     public async Task<IActionResult> Register(RegisterDto dto)
     {
@@ -25,6 +26,7 @@ public class AuthController : BaseApiController
 
         return HandleResult(result);
     }
+  
     [Authorize]
     [HttpPost("logout")]
     public async Task<IActionResult> Logout()
@@ -33,6 +35,7 @@ public class AuthController : BaseApiController
 
         return HandleResult(result);
     }
+   
     [Authorize]
     [HttpPatch("confirm-current-email")]
     public async Task<IActionResult> ConfirmCurrentEmail(string code)
@@ -47,6 +50,13 @@ public class AuthController : BaseApiController
     public async Task<IActionResult> ResendEmailConfirmationCode()
     {
         var result = await _authService.ResendCurrentEmailConfirmationCodeAsync();
+        return HandleResult(result);
+    }
+    
+    [HttpPost("forget-password")]
+    public async Task<IActionResult> ForgetPassword(string email)
+    {
+        var result = await _authService.ForgetPasswordAsync(email);
         return HandleResult(result);
     }
 }
