@@ -10,4 +10,9 @@
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="MailKit" Version="4.18.1" />
+    <PackageReference Include="MimeKit" Version="4.18.1" />
+  </ItemGroup>
+
 </Project>
