@@ -41,4 +41,12 @@ public class AuthController : BaseApiController
 
         return HandleResult(result);
     }
+ 
+    [Authorize]
+    [HttpPost("resend-current-email-confirmation-code")]
+    public async Task<IActionResult> ResendEmailConfirmationCode()
+    {
+        var result = await _authService.ResendCurrentEmailConfirmationCodeAsync();
+        return HandleResult(result);
+    }
 }
